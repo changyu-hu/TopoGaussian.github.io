@@ -1,10 +1,10 @@
-# Nerfies
+# TopoGaussian
 
 This is the repository that contains source code for the [TopoGaussian Website](https://topogaussian.github.io).
 
 If you find TopoGaussian useful for your work please cite:
 ```
-}
+
 ```
 
 # Website License
