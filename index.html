@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TopoGaussian: Inferring Internal Geometric Structures from Visual Clues with Gaussian Splatting and Topology Optimization">
+  <meta name="keywords" content="3D Gaussian Splatting, Implicit Neurual Surface, Differentiable Simulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TopoGaussian: Inferring Internal Geometric Structures from Visual Clues with Gaussian Splatting and Topology Optimization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/comparison.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TopoGaussian: Inferring Internal Geometric Structures from Visual Clues with Gaussian Splatting and Topology Optimization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Anonymous Author(s)</a>
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/videos/nerfies_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>We present <span class="dnerf">TopoGaussian</span>, a mesh-free holistic pipeline for 
+            inferring the interior structure of an opaque object with easily accessible photos and videos as input.</p>
+          
+          <p>
+            Traditional approaches require intrusive sensors, operate on expensive equipment, or reconstruct surface information only. 
+            Our pipeline combines Gaussian splatting with a novel particle-based differentiable simulator for hollowed objects. 
+            Based on the gradients from this simulator, we provides two optimizers, including a new shape optimization scheme based on a particle representation, 
+            and a method based on neural implicit surface. The resultant pipeline is holistic and meshless, supporting modeling, simulation, and optimization of 
+            the interior geometry in a hollowed object on a unified point-cloud representation. 
+          </p>
+
+          <p>
+            We showcase the results of our pipeline on several synthetic examples and four real-world tasks, involving rigid and soft objects and 
+            report the successful deduction of their interior designs that lead to visually plausible motions observed in the video input. 
+            Based on the output, we further performed 3D-print and validates the effect of our methods. These results highlight the potential of our pipeline in 3D-vision, 
+            soft-robotics, and manufacturing applications.
+          </p>
+           
+          <!-- <p>
+            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
+            photos/videos into deformable NeRF
+            models that allow for photorealistic renderings of the subject from arbitrary
+            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
+            using a
+            rig with two mobile phones that take time-synchronized photos, yielding train/validation
+            images of the same pose at different viewpoints. We show that our method faithfully
+            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
+            fidelity.
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Method -->
+    <hr>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/overview.png"
+               class="framework-image"
+               alt="TopoGaussian overview."/>
+          <p>
+              Compared to 3DGS, we achieve global consistency in geometry reconstruction while
+              maintaining similar rendering quality. Initially, we improve
+              the modeling of scene geometry attributes by compressing
+              3D Gaussians into a 2D flat plane representation, which
+              is used to generate plane distance and normal maps, and
+              subsequently converted into unbiased depth maps. We then
+              introduce single-view geometric, multi-view photometric, and
+              geometric consistency loss to ensure global geometry consistency. Additionally, the exposure compensation model further
+              improves reconstruction accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<!-- Rigid Body -->
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Rigid Body</h2>
+      <div class="image-container">
+        <h2 class="title is-4">Synthetic experiments</h2>
+            <img style="width: 90%;" src="./static/images/gallery.jpg"/>
+            </object>
+      </div>
+
+      <br/>
+      <div class="image-container">
+        <h2 class="title is-4">Real-world experiments</h2>
+
+          <h3 class="title is-6">Hawk</h3>
+            <img style="width: 90%;" src="./static/images/hawk.png"/>
+            <br/>
+          <h3 class="title is-6">Qiqi</h3>
+            <img style="width: 90%;" src="./static/images/qiqi.png"/>
+            <br/>
+          <h3 class="title is-6">Tumbler</h3>  
+            <img style="width: 90%;" src="./static/images/tumbler.png"/>
+            <br/>
+            </object>
+      </div>
+
+    </div>
+  <script src="./static/js/comparison.js"></script>
+  </div>
+</section>
+
+<!-- Soft Body -->
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Soft Body</h2>
+      <div class="image-container">
+        <h2 class="title is-4">Synthetic experiments</h2>
+            <img style="width: 90%;" src="./static/images/soft_syn.png"/>
+            </object>
+      </div>
+
+      <br/>
+      <div class="image-container">
+        <h2 class="title is-4">Real-world experiments</h2>
+            <img style="width: 90%;" src="./static/images/hand.png"/>
+            </object>
+      </div>
+
+    </div>
+  <script src="./static/js/comparison.js"></script>
+  </div>
+</section>
+
+<!-- Comparison -->
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Comparison</h2>
+      <div class="image-container">
+        <h2 class="title is-4">Comparison with mesh-based method</h2>
+            <img style="width: 90%;" src="./static/images/hawk.png"/>
+            </object>
+      </div>
+
+      <br/>
+      <div class="image-container">
+        <h2 class="title is-4">Comparison with different point cloud resolution</h2>
+            <img style="width: 90%;" src="./static/images/hawk.png"/>
+            </object>
+      </div>
+
+      <br/>
+      <div class="image-container">
+        <h2 class="title is-4">Comparison with different sigmoid sharpness</h2>
+            <img style="width: 90%;" src="./static/images/hawk.png"/>
+            </object>
+      </div>
+    </div>
+  <script src="./static/js/comparison.js"></script>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>We thank <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for their amazing template.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
